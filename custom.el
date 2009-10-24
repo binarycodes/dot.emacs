@@ -4,6 +4,7 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(ecb-options-version "2.40")
+ '(org-agenda-files (quote ("~/documents/org-files/personal.org")))
  '(srecode-map-save-file "/home/sujoy/.emacs.d/.srecode/srecode-map"))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
