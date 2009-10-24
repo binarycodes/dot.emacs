@@ -81,3 +81,6 @@
 
 ;; paredit mode settings
 (require 'my-paredit)
+
+;; org-mode settings
+(require 'my-org)
