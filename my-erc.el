@@ -133,9 +133,24 @@
     (unless (string= datestamp erc-last-datestamp)
       (erc-insert-timestamp-left datestamp)
       (setq erc-last-datestamp datestamp))))
-    
+
 (setq erc-timestamp-only-if-changed-flag t
       erc-timestamp-format "[%H:%M:%S] "
-      erc-datestamp-format " === [%Y-%m-%d %a] ===\n" ; mandatory ascii art                          
+      erc-datestamp-format " === [%Y-%m-%d %a] ===\n" ; mandatory ascii art
       erc-fill-prefix "      "
       erc-insert-timestamp-function 'ks-timestamp)
+
+
+;; kill all erc buffers
+(defun myerc-kill-all-buffers ()
+  "Kill all erc-mode buffers. Useful to cleanup after an ERC session"
+  (interactive)
+  (let (final-list (list ))
+    (dolist (buff (buffer-list) final-list)
+      (if (equal 'erc-mode (with-current-buffer buff major-mode))
+          (setq final-list (append (list (buffer-name buff)) final-list))))
+    (if final-list
+		(if (y-or-n-p "Kill all ERC buffers? ")
+			(dolist (buff final-list nil)
+			  (kill-buffer buff)))
+	  (message "No ERC buffers to kill"))))
