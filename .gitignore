@@ -5,3 +5,4 @@
 /tramp
 /my-private-info.el
 /.org-id-locations
+/eshell/*

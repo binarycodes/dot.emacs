@@ -77,3 +77,7 @@
       (lambda (e)
         (y-or-n-p-with-timeout
          "Really exit Emacs? " 5 nil)))
+
+
+;; eshell
+(setq eshell-directory-name "~/.emacs.d/eshell/")
