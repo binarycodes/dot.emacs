@@ -21,7 +21,8 @@
 
 (erc-track-mode t)
 
-(setq erc-auto-query 'window)
+(setq erc-auto-query 'window
+	  erc-prompt ">>> ")
 
 ;; don't show any of this
 (setq erc-hide-list '("JOIN" "PART" "QUIT"))
@@ -150,7 +151,7 @@
       (if (equal 'erc-mode (with-current-buffer buff major-mode))
           (setq final-list (append (list (buffer-name buff)) final-list))))
     (if final-list
-		(if (y-or-n-p "Kill all ERC buffers? ")
-			(dolist (buff final-list nil)
-			  (kill-buffer buff)))
-	  (message "No ERC buffers to kill"))))
+        (if (y-or-n-p "Kill all ERC buffers? ")
+            (dolist (buff final-list nil)
+              (kill-buffer buff)))
+      (message "No ERC buffers to kill"))))
