@@ -84,3 +84,6 @@
 
 ;; org-mode settings
 (require 'my-org)
+
+;; mingus-mode settings
+(autoload 'mingus "mingus" "MPD Controller" t)
