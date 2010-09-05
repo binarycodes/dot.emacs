@@ -25,6 +25,14 @@
 ;; cedet settings
 (require 'my-cedet)
 
+;; muttrc-mode settings
+(autoload 'muttrc-mode "muttrc-mode.el"
+  "Major mode to edit muttrc files" t)
+
+(setq auto-mode-alist
+	  (append '(("muttrc\\'" . muttrc-mode))
+			  auto-mode-alist))
+
 ;; company mode
 (autoload 'company-mode "company" nil t)
 
