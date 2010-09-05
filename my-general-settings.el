@@ -33,7 +33,6 @@
   (setq font-lock-auto-fontify t))   ; XEmacs
 
 ;; use hippie-expand instead of dabbrev
-(global-set-key (kbd "M-/") 'hippie-expand)
 (setq hippie-expand-try-functions-list
       '(try-expand-dabbrev
         try-expand-dabbrev-all-buffers
@@ -66,7 +65,7 @@
       version-control t)       ; use versioned backups
 
 
-;; enabled settigs that were disabled by default
+;; enabled settings that were disabled by default
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
