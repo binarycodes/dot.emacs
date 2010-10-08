@@ -30,3 +30,13 @@
         (when (member f include-list)
           (add-to-load-path-with-subdirs name exclude-list include-list)))))
   (add-to-list 'load-path base))
+
+(defun my-kill-trash-buffs ()
+  (interactive)
+  (progn
+	(setq bufflist (buffer-list))
+	(while (not (equal bufflist nil))
+	  (if (equal (buffer-file-name (car bufflist)) nil)
+		  (kill-buffer (car bufflist)))
+	  (setq bufflist (cdr bufflist)))))
+
