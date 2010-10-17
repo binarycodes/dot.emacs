@@ -9,7 +9,7 @@
 (add-to-load-path-with-subdirs (expand-file-name "~/.emacs.d")
                                '(".." "." ".srecode" "auto-save-list"
                                  "history" "my-backup-files" "eshell")
-                               '("lisp" "my-lisp"))
+                               '("plugins" "my-lisp"))
 
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/cedet/common")
 
