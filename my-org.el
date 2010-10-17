@@ -1,6 +1,6 @@
 (provide 'my-org)
 
-(setq org-hide-leading-stars t
+(setq org-hide-leading-stars nil
       org-log-done 'time
       org-startup-folded 'content
       org-hide-block-startup t

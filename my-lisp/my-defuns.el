@@ -21,6 +21,8 @@
   (untabify (point-min) (point-max)))
 
 
+;; Adds base to the load-path and all dirs from include-list recursively, while
+;; excluding the content from the exclude-list
 (defun add-to-load-path-with-subdirs (base exclude-list include-list)
   (dolist (f (directory-files base))
     (let ((name (concat base "/" f)))
@@ -31,12 +33,14 @@
           (add-to-load-path-with-subdirs name exclude-list include-list)))))
   (add-to-list 'load-path base))
 
-(defun my-kill-trash-buffs ()
+
+;; Kills all buffers that are not associated with a file on disk
+(defun my-kill-non-file-buffs ()
   (interactive)
   (progn
-	(setq bufflist (buffer-list))
-	(while (not (equal bufflist nil))
-	  (if (equal (buffer-file-name (car bufflist)) nil)
-		  (kill-buffer (car bufflist)))
-	  (setq bufflist (cdr bufflist)))))
+    (setq bufflist (buffer-list))
+    (while (not (equal bufflist nil))
+      (if (equal (buffer-file-name (car bufflist)) nil)
+          (kill-buffer (car bufflist)))
+      (setq bufflist (cdr bufflist)))))
 
