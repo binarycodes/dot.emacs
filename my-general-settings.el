@@ -34,11 +34,11 @@
 
 ;; use hippie-expand instead of dabbrev
 (setq hippie-expand-try-functions-list
-      '(try-expand-dabbrev
+      '(try-complete-file-name-partially
+        try-complete-file-name
+        try-expand-dabbrev
         try-expand-dabbrev-all-buffers
         try-expand-dabbrev-from-kill
-        try-complete-file-name-partially
-        try-complete-file-name
         try-expand-all-abbrevs
         try-expand-list
         try-expand-line
@@ -58,7 +58,7 @@
 ;; backup file settings
 (setq backup-by-copying t      ; don't clobber symlinks
       backup-directory-alist
-      '(("." . "~/.emacs.d/my-backup-files"))    ; don't litter my fs tree
+      '(("." . "~/.emacs.d/my-backup-files"))    ; don't litter my filesystem tree
       delete-old-versions t
       kept-new-versions 4
       kept-old-versions 2
@@ -80,3 +80,4 @@
 
 ;; eshell
 (setq eshell-directory-name "~/.emacs.d/eshell/")
+

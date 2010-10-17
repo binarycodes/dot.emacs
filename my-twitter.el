@@ -8,4 +8,3 @@
 	 (setq twittering-tmp-dir "~/.emacs.d/history/twitter") ; Directory to store buddy icons
 	 ))
 
-(autoload 'twittering-mode "twittering-mode" nil t)

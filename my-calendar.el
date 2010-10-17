@@ -1,4 +1,4 @@
-(provide 'mycalendar)
+(provide 'my-calendar)
 
 (require 'calendar)
 

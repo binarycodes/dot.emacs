@@ -8,10 +8,13 @@
 ;; add paths to the load-path
 (add-to-load-path-with-subdirs (expand-file-name "~/.emacs.d")
                                '(".." "." ".srecode" "auto-save-list"
-                                 "history" "my-backup-files")
+                                 "history" "my-backup-files" "eshell")
                                '("lisp" "my-lisp"))
 
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/cedet/common")
+
+;; custom autoloads for various mode settings
+(require 'my-autoloads)
 
 ;; load private informations
 (require 'my-private-info)
@@ -25,29 +28,11 @@
 ;; cedet settings
 (require 'my-cedet)
 
-;; muttrc-mode settings
-(autoload 'muttrc-mode "muttrc-mode.el"
-  "Major mode to edit muttrc files" t)
+;; muttrc settings
+(require 'my-muttrc)
 
-(setq auto-mode-alist
-	  (append '(("muttrc\\'" . muttrc-mode))
-			  auto-mode-alist))
-
-;; company mode
-(autoload 'company-mode "company" nil t)
-
-;; magit settings
-(autoload 'magit-status "magit" nil t)
-
-;; erc settings
-(autoload 'myerc-start-or-switch "my-erc" "ERC mode." t)
-
-;; slime mode
-(autoload 'slime "my-slime" "Slime mode." t)
-(autoload 'slime-connect "my-slime" "Slime mode." t)
-
-;; nxhtml settings
-(autoload 'nxhtml-mode "nxhtml/autostart.el" "nxhtml mode" t)
+;; auctex
+(require 'my-latex)
 
 ;; scheme
 (require 'my-scheme)
@@ -55,30 +40,10 @@
 ;; haskell
 (require 'my-haskell)
 
-;; parens
-(require 'mic-paren)
-(paren-activate)
-
-
-;; python mode settings
-(autoload 'python-mode "python-mode.el" "Python mode." t)
-(setq auto-mode-alist (append '(("/*.\.py$" . python-mode)) auto-mode-alist))
-
-;; lua mode settings
-(setq auto-mode-alist (cons '("\.lua$" . lua-mode) auto-mode-alist))
-(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
-
-;; php mode settings
-(autoload 'php-mode "php-mode.el" "Php mode." t)
-(setq auto-mode-alist (append '(("/*.\.php[345]?$" . php-mode)) auto-mode-alist))
-
 ;; w3m browser
 (require 'w3m-load)
 
-;; auctex settings
-(load "auctex.el" nil t t)
-(load "preview-latex.el" nil t t)
-
+;; flyspell mode
 (require 'my-flyspell)
 
 ;; emacs code browser
@@ -93,5 +58,5 @@
 ;; org-mode settings
 (require 'my-org)
 
-;; mingus-mode settings
-(autoload 'mingus "mingus" "MPD Controller" t)
+;; calendar settings
+(require 'my-calendar)
