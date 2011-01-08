@@ -45,3 +45,10 @@
 
 ;; calendar settings
 (require 'my-calendar)
+
+;; mic-paren settings
+(require 'my-mic-paren)
+
+;; dired settings
+(require 'dired-single)
+(require 'my-dired)

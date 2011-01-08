@@ -1,5 +1,11 @@
 (provide 'my-general-settings)
 
+;; change to my home
+(cd "~")
+
+;; echo keystrokes instantly
+(setq echo-keystrokes 0.01)
+
 ;; clean startup
 (setq inhibit-startup-echo-area-message t
 	  inhibit-startup-message t)
@@ -84,3 +90,6 @@
 
 ;; require new line at the end
 (setq require-final-newline t)
+
+;; find-file-at-point is really usefull, similar to gf in vim
+(ffap-bindings)

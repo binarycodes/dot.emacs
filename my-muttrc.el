@@ -1,5 +1,4 @@
 (provide 'my-muttrc)
 
-(setq auto-mode-alist
-      (append '(("muttrc\\'" . muttrc-mode))
-              auto-mode-alist))
+(add-to-list 'auto-mode-alist '("muttrc\\'" . muttrc-mode))
+(add-to-list 'auto-mode-alist '("/mutt-" . mail-mode))

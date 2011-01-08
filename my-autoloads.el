@@ -50,3 +50,4 @@
 
 ;; nxhtml settings
 (autoload 'nxhtml-mode "nxhtml/autostart.el" "nxhtml mode" t)
+
