@@ -52,3 +52,6 @@
 ;; dired settings
 (require 'dired-single)
 (require 'my-dired)
+
+;; cc mode settings
+(require 'my-cc-mode)
