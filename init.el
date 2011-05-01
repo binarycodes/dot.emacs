@@ -2,9 +2,6 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load-file custom-file)
 
-;; start winner-mode
-(winner-mode 1)
-
 ;; general custom functions
 (load-file (expand-file-name "~/.emacs.d/my-lisp/my-defuns.el"))
 

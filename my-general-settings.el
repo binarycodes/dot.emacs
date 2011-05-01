@@ -3,6 +3,9 @@
 ;; change to my home
 (cd "~")
 
+;; start winner-mode
+(winner-mode 1)
+
 ;; echo keystrokes instantly
 (setq echo-keystrokes 0.01)
 
@@ -93,3 +96,7 @@
 
 ;; find-file-at-point is really usefull, similar to gf in vim
 (ffap-bindings)
+
+;; this makes editing camel case words a lot easier
+(subword-mode)
+
