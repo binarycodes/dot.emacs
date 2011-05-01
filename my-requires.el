@@ -1,8 +1,9 @@
 ;; custom autoloads for various mode settings
 (require 'my-autoloads)
 
-;; load private informations
-(require 'my-private-info)
+;; load private informations if available
+(if (file-exists-p "~/.emacs.d/my-private-info.el ")
+	(require 'my-private-info))
 
 ;; load generic emacs settings
 (require 'my-general-settings)

@@ -1,3 +1,9 @@
+;; create the history directory if not exists
+;; since it is not versioned
+
+(unless (file-exists-p "~/.emacs.d/history/")
+  (mkdir "~/.emacs.d/history/"))
+
 ;; set init file for custom settings
 (setq custom-file "~/.emacs.d/custom.el")
 (load-file custom-file)
