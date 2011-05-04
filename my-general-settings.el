@@ -100,3 +100,6 @@
 ;; this makes editing camel case words a lot easier
 (subword-mode)
 
+;; use the string regex syntax, the default needs too many backslashes
+(eval-after-load "re-builder"
+  (setq reb-re-syntax 'string))
