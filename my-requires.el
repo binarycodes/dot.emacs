@@ -2,7 +2,7 @@
 (require 'my-autoloads)
 
 ;; load private informations if available
-(if (file-exists-p "~/.emacs.d/my-private-info.el ")
+(if (file-exists-p "~/.emacs.d/my-private-info.el")
 	(require 'my-private-info))
 
 ;; load generic emacs settings
@@ -32,9 +32,6 @@
 ;; flyspell mode
 (require 'my-flyspell)
 
-;; emacs code browser
-(require 'ecb-autoloads)
-
 ;; twittering-mode
 (require 'my-twitter)
 
@@ -56,3 +53,6 @@
 
 ;; cc mode settings
 (require 'my-cc-mode)
+
+;; ecb settings
+(require 'my-ecb)

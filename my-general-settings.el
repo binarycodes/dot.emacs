@@ -103,3 +103,9 @@
 ;; use the string regex syntax, the default needs too many backslashes
 (eval-after-load "re-builder"
   (setq reb-re-syntax 'string))
+
+;; disable bold fonts
+(mapc
+ (lambda (face)
+   (set-face-attribute face nil :weight 'normal))
+ (face-list))
