@@ -5,7 +5,7 @@
 (require 'erc-join)
 (erc-autojoin-mode 1)
 (setq erc-autojoin-channels-alist
-      '(("freenode.net" "#emacs" "#archlinux")))
+      '(("freenode.net" "#archlinux" "#emacs" "#vim" "#xmonad")))
 
 (setq erc-modules '(scrolltobottom))
 (add-hook 'erc-mode-hook

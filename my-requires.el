@@ -56,3 +56,6 @@
 
 ;; ecb settings
 (require 'my-ecb)
+
+;; smtpmail settings
+(require 'my-smtpmail)
