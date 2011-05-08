@@ -79,6 +79,7 @@
 (defun myerc-start-or-switch ()
   "Switch to ERC buffer using IDO to choose which one, or start ERC if not already started."
   (interactive)
+  (require 'my-private-info "my-private-info.el.gpg")
   (let (final-list (list ))
     (dolist (buf (buffer-list) final-list)
       (if (equal 'erc-mode (with-current-buffer buf major-mode))

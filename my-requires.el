@@ -2,8 +2,7 @@
 (require 'my-autoloads)
 
 ;; load private informations if available
-(if (file-exists-p "~/.emacs.d/my-private-info.el")
-	(require 'my-private-info))
+;;(require 'my-private-info "my-private-info.el.gpg")
 
 ;; load generic emacs settings
 (require 'my-general-settings)
@@ -59,3 +58,6 @@
 
 ;; smtpmail settings
 (require 'my-smtpmail)
+
+;; easyPG settings
+(require 'my-easypg)
