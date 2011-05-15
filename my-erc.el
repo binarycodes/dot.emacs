@@ -22,7 +22,7 @@
 (erc-track-mode t)
 
 (setq erc-auto-query 'window
-	  erc-prompt ">>> ")
+      erc-prompt ">>> ")
 
 ;; don't show any of this
 (setq erc-hide-list '("JOIN" "PART" "QUIT"))
@@ -97,9 +97,9 @@
 ;; Pool of colors to use when coloring IRC nicks.
 (setq erc-colors-list '("green" "blue" "red"
                         "dark gray" "dark orange"
-                        "dark magenta" "maroon"
+                        "magenta" "maroon"
                         "indian red" "forest green"
-                        "midnight blue" "dark violet"))
+                        "pink" "yellow"))
 ;; special colors for some people
 (setq erc-nick-color-alist '((my-erc-fn-nick . "White")))
 
@@ -156,3 +156,11 @@
             (dolist (buff final-list nil)
               (kill-buffer buff)))
       (message "No ERC buffers to kill"))))
+
+
+;; custom settings
+
+(setq erc-kill-buffer-on-part t
+      erc-kill-queries-on-quit t
+      erc-kill-server-buffer-on-quit t
+      erc-timestamp-right-align-by-pixel t)
