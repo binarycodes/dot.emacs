@@ -8,7 +8,8 @@
   (define-key dired-mode-map [mouse-1] 'dired-single-buffer-mouse)
   (define-key dired-mode-map "^"
     (function
-     (lambda nil (interactive) (dired-single-buffer "..")))))
+     (lambda nil (interactive) (dired-single-buffer ".."))))
+  (setq dired-listing-switches "-alh"))
 
 ;; if dired's already loaded, then the keymap will be bound
 (if (boundp 'dired-mode-map)
