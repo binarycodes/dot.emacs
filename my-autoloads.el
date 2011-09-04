@@ -51,3 +51,5 @@
 ;; nxhtml settings
 (autoload 'nxhtml-mode "nxhtml/autostart.el" "nxhtml mode" t)
 
+;; pkgbuild mode settings
+(autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
