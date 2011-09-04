@@ -1,9 +1,6 @@
 ;; custom autoloads for various mode settings
 (require 'my-autoloads)
 
-;; load private informations if available
-;;(require 'my-private-info "my-private-info.el.gpg")
-
 ;; load generic emacs settings
 (require 'my-general-settings)
 
