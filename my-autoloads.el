@@ -35,9 +35,6 @@
 ;; cedet settings
 (autoload 'cedet "cedet" nil t)
 
-;; company mode
-(autoload 'company-mode "company" nil t)
-
 ;; magit settings
 (autoload 'magit-status "magit" nil t)
 
