@@ -4,9 +4,6 @@
 ;; load generic emacs settings
 (require 'my-general-settings)
 
-;; custom input settings, keybindings
-(require 'my-input)
-
 ;; cedet settings
 (require 'my-cedet)
 
@@ -58,3 +55,8 @@
 
 ;; easyPG settings
 (require 'my-easypg)
+
+
+;; my-custom keybinding mode
+(require 'my-keys)
+
