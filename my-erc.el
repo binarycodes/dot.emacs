@@ -1,11 +1,22 @@
 (provide 'my-erc)
 
 (require 'erc)
+(require 'tls)
+
+(setq tls-program '("openssl s_client -connect %h:%p -no_ssl2 -ign_eof
+-CAfile /home/sujoy/.private/GandiStandardSSLCA.crt 
+ -cert /home/sujoy/.private/nick.pem"
+                    "gnutls-cli --priority secure256
+--x509cafile /home/sujoy/.private/GandiStandardSSLCA.crt
+ --x509certfile /home/sujoy/.private/nick.pem -p %p %h"
+                    "gnutls-cli --priority secure256 -p %p %h"))
+
 
 (require 'erc-join)
 (erc-autojoin-mode 1)
 (setq erc-autojoin-channels-alist
       '(("freenode.net" "#archlinux" "#emacs" "#vim" "#xmonad")))
+
 
 (setq erc-modules '(scrolltobottom))
 (add-hook 'erc-mode-hook
@@ -14,10 +25,12 @@
              (pcomplete-erc-setup)
              (erc-completion-mode 1)
              (erc-button-mode -1)
-             (erc-spelling-mode 1)))
+             (erc-spelling-mode 1)
+             (erc-readonly-mode 1)
+             (erc-move-to-prompt-mode 1)))
 
 (setq erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE"
-                                "324" "329" "332" "333" "353" "477"))
+                                "324" "329" "332" "333" "353" "477" "357"))
 
 (erc-track-mode t)
 
@@ -86,20 +99,23 @@
           (setq final-list (append (list (buffer-name buf)) final-list))))
     (if final-list
         (switch-to-buffer (ido-completing-read "Buffer: " final-list))
-      (erc :server "irc.freenode.net"
-           :port 6667
-           :nick my-erc-fn-nick
-           :password my-erc-fn-pass
-           :full-name my-erc-fn-name))))
+      (erc-tls :server "irc.freenode.net"
+			   :port 7000
+			   :nick my-erc-fn-nick
+			   :password my-erc-fn-pass
+			   :full-name my-erc-fn-name))))
 
 ;; ERC nick colors section
 
 ;; Pool of colors to use when coloring IRC nicks.
-(setq erc-colors-list '("green" "blue" "red"
+(setq erc-colors-list '("blue" "green" "yellow"
+                        "gray" "brown" "red"
+                        "purple" "white" "cyan"
                         "dark gray" "dark orange"
-                        "magenta" "maroon"
+                        "dark magenta" "maroon"
                         "indian red" "forest green"
-                        "pink" "yellow"))
+                        "dark violet"
+                        ))
 ;; special colors for some people
 (setq erc-nick-color-alist '((my-erc-fn-nick . "White")))
 
