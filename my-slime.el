@@ -8,7 +8,7 @@
      (slime-setup '(slime-asdf
 					slime-autodoc
                     slime-editing-commands
-                    slime-fancy-inspector
+                    slime-fancy
                     slime-fontifying-fu
                     slime-fuzzy
                     slime-indentation
@@ -20,8 +20,11 @@
                     slime-scratch
                     slime-xref-browser))
      (slime-autodoc-mode)
-     (setq slime-complete-symbol*-fancy t)
-     (setq slime-complete-symbol-function 'slime-fuzzy-complete-symbol)
+     (setq slime-complete-symbol*-fancy t
+		   slime-complete-symbol-function 'slime-fuzzy-complete-symbol
+		   slime-when-complete-filename-expand t
+		   slime-truncate-lines nil
+		   slime-autodoc-use-multiline-p t)
 	 (add-hook 'lisp-mode-hook (lambda () (slime-mode t)))))
 
 (require 'slime)
