@@ -13,6 +13,7 @@
   (interactive)
   (insert "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent libero orci, auctor sed, faucibus vestibulum, gravida vitae, arcu. Nunc posuere. Suspendisse potenti. Praesent in arcu ac nisl ultricies ultricies. Fusce eros. Sed pulvinar vehicula ante. Maecenas urna dolor, egestas vel, tristique et, porta eu, leo. Curabitur vitae sem eget arcu laoreet vulputate. Cras orci neque, faucibus et, rhoncus ac, venenatis ac, magna. Aenean eu lacus. Aliquam luctus facilisis augue. Nullam fringilla consectetuer sapien. Aenean neque augue, bibendum a, feugiat id, lobortis vel, nunc. Suspendisse in nibh quis erat condimentum pretium. Vestibulum tempor odio et leo. Sed sodales vestibulum justo. Cras convallis pellentesque augue. In eu magna. In pede turpis, feugiat pulvinar, sodales eget, bibendum consectetuer, magna. Pellentesque vitae augue."))
 
+
 ;; Make the whole buffer pretty and consistent
 (defun iwb()
   "Indent Whole Buffer"
@@ -22,9 +23,10 @@
   (untabify (point-min) (point-max)))
 
 
-;; Adds base to the load-path and all dirs from include-list recursively, while
-;; excluding the content from the exclude-list
+
 (defun add-to-load-path-with-subdirs (base exclude-list include-list)
+  "Adds base to the load-path and all dirs from include-list
+recursively, while excluding the content from the exclude-list"
   (dolist (f (directory-files base))
     (let ((name (concat base "/" f)))
       (when (and (file-directory-p name)
@@ -35,15 +37,15 @@
   (add-to-list 'load-path base))
 
 
-;; Kills all buffers that are not associated with a file on disk
-;; or with certain buffers (ERC for now)
-(defun my-kill-non-file-buffs ()
-  (interactive)
-  (progn
-    (setq bufflist (buffer-list))
-    (while (not (equal bufflist nil))
-      (if (and  (equal (buffer-file-name (car bufflist)) nil)
-				(not (eq (with-current-buffer (car bufflist) major-mode) 'erc-mode)))
-          (kill-buffer (car bufflist)))
-      (setq bufflist (cdr bufflist)))))
 
+(defun my-kill-non-file-buffs ()
+  "Kill all buffers that are not associated with files. Excludes
+non-file buffers for some modes and buffer names. Mode list and
+buffer names to be updated as per convenience."
+  (interactive)
+  (dolist (buffer (buffer-list))
+    (when (and  (equal (buffer-file-name buffer) nil)
+                (not (member (with-current-buffer buffer major-mode) '(erc-mode slime-repl-mode comint-mode inferior-lisp)))
+                (not (member (buffer-name buffer) '(" *cl-connection*"))))
+      (kill-buffer buffer)))
+  (message "Killed some buffers!"))
