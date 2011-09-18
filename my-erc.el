@@ -1,66 +1,59 @@
 (provide 'my-erc)
 
+(require 'my-private-info "my-private-info.el.gpg")
 (require 'erc)
 (require 'tls)
 
-(setq tls-program '("openssl s_client -connect %h:%p -no_ssl2 -ign_eof
--CAfile /home/sujoy/.private/GandiStandardSSLCA.crt 
- -cert /home/sujoy/.private/nick.pem"
-                    "gnutls-cli --priority secure256
---x509cafile /home/sujoy/.private/GandiStandardSSLCA.crt
- --x509certfile /home/sujoy/.private/nick.pem -p %p %h"
+(setq tls-program '("openssl s_client -connect %h:%p -no_ssl2
+-ign_eof -CAfile /home/sujoy/.private/GandiStandardSSLCA.crt
+-cert /home/sujoy/.private/nick.pem"
+                    "gnutls-cli --priority secure256 --x509cafile
+/home/sujoy/.private/GandiStandardSSLCA.crt --x509certfile
+/home/sujoy/.private/nick.pem -p %p %h"
                     "gnutls-cli --priority secure256 -p %p %h"))
 
-
-(require 'erc-join)
-(erc-autojoin-mode 1)
-(setq erc-autojoin-channels-alist
-      '(("freenode.net" "#archlinux" "#emacs" "#vim" "#xmonad")))
-
-
-(setq erc-modules '(scrolltobottom))
 (add-hook 'erc-mode-hook
           '(lambda ()
              (require 'erc-pcomplete)
-             (pcomplete-erc-setup)
-             (erc-completion-mode 1)
-             (erc-button-mode -1)
-             (erc-spelling-mode 1)
-             (erc-readonly-mode 1)
-             (erc-move-to-prompt-mode 1)))
+             (pcomplete-erc-setup)))
 
-(setq erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE"
-                                "324" "329" "332" "333" "353" "477" "357"))
+(eval-after-load "my-erc"
+  '(progn
+     ;; Loading all requried MODES
+     (require 'erc-join)
+     (require 'erc-netsplit)
+     (require 'erc-fill)
+     (require 'erc-ring)
+     (erc-track-mode t)
+     (erc-completion-mode 1)
+     (erc-autojoin-mode 1)
+     (erc-button-mode -1)
+     (erc-spelling-mode 1)
+     (erc-readonly-mode 1)
+     (erc-fill-mode 1)
+     (erc-timestamp-mode t)
+     (erc-ring-mode t)
+     (erc-scrolltobottom-mode 1)
+     (erc-move-to-prompt-mode 1)
+     (erc-netsplit-mode t)
+     (erc-ncm-mode 1)
+     ;; Custom Settings
+     (setq erc-kill-buffer-on-part t
+           erc-kill-queries-on-quit t
+           erc-kill-server-buffer-on-quit t
+           erc-timestamp-right-align-by-pixel t
+           erc-auto-query 'window
+           erc-prompt ">>> "
+           erc-hide-list '("JOIN" "PART" "QUIT")
+           erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE"
+                                     "324" "329" "332" "333" "353" "477" "357")
+           erc-autojoin-channels-alist
+           '(("freenode.net" "#archlinux" "#emacs" "#vim" "#xmonad")))))
 
-(erc-track-mode t)
 
-(setq erc-auto-query 'window
-      erc-prompt ">>> ")
-
-;; don't show any of this
-(setq erc-hide-list '("JOIN" "PART" "QUIT"))
-
-(require 'erc-fill)
-(erc-fill-mode 1)
-
-(require 'erc-ring)
-(erc-ring-mode t)
-
-(require 'erc-netsplit)
-(erc-netsplit-mode t)
-
-(erc-timestamp-mode t)
-(setq erc-timestamp-format "[%H:%M:%S]")
-
-
-(define-key erc-mode-map (kbd "C-c C-q")
-  (lambda (nick)
-    (interactive (list (completing-read "Nick: " channel-members)))
-    (erc-cmd-QUERY nick)))
-
-
-;; number of opped/voiced/normal members of the current channel in the modeline
-(define-minor-mode ncm-mode "" nil
+;;; Number of OPPED/VOICED/NORMAL members of the current channel in
+;;; the modeline
+(define-minor-mode erc-ncm-mode "" nil
   (:eval
    (let ((ops 0)
          (voices 0)
@@ -75,7 +68,7 @@
      (format " %S/%S/%S " ops voices members))))
 
 
-;; change header line face if disconnected
+;;;Change header line face if DISCONNECTED
 (defface erc-header-line-disconnected
   '((t (:foreground "black" :background "indianred")))
   "Face to use when ERC has been disconnected.")
@@ -90,9 +83,9 @@
 
 
 (defun myerc-start-or-switch ()
-  "Switch to ERC buffer using IDO to choose which one, or start ERC if not already started."
+  "Switch to ERC buffer using IDO to choose which one, or start
+ERC if not already started."
   (interactive)
-  (require 'my-private-info "my-private-info.el.gpg")
   (let (final-list (list ))
     (dolist (buf (buffer-list) final-list)
       (if (equal 'erc-mode (with-current-buffer buf major-mode))
@@ -100,14 +93,13 @@
     (if final-list
         (switch-to-buffer (ido-completing-read "Buffer: " final-list))
       (erc-tls :server "irc.freenode.net"
-			   :port 7000
-			   :nick my-erc-fn-nick
-			   :password my-erc-fn-pass
-			   :full-name my-erc-fn-name))))
+               :port 7000
+               :nick my-erc-fn-nick
+               :password my-erc-fn-pass
+               :full-name my-erc-fn-name))))
 
-;; ERC nick colors section
-
-;; Pool of colors to use when coloring IRC nicks.
+;;; ERC nick colors section.
+;;; Pool of colors to use when coloring IRC nicks.
 (setq erc-colors-list '("blue" "green" "yellow"
                         "gray" "brown" "red"
                         "purple" "white" "cyan"
@@ -115,12 +107,13 @@
                         "dark magenta" "maroon"
                         "indian red" "forest green"
                         "dark violet"
-                        ))
-;; special colors for some people
-(setq erc-nick-color-alist '((my-erc-fn-nick . "White")))
+                        )
+      erc-nick-color-alist '((my-erc-fn-nick . "White")))
 
 (defun erc-get-color-for-nick (nick)
-  "Gets a color for NICK. If NICK is in erc-nick-color-alist, use that color, else hash the nick and use a random color from the pool"
+  "Gets a color for NICK. If NICK is in erc-nick-color-alist, use
+that color, else hash the nick and use a random color from the
+pool"
   (or (cdr (assoc nick erc-nick-color-alist))
       (nth
        (mod (string-to-number
@@ -129,7 +122,8 @@
        erc-colors-list)))
 
 (defun erc-put-color-on-nick ()
-  "Modifies the color of nicks according to erc-get-color-for-nick"
+  "Modifies the color of nicks according to
+erc-get-color-for-nick"
   (save-excursion
     (goto-char (point-min))
     (if (looking-at "<\\([^>]*\\)>")
@@ -140,8 +134,8 @@
 
 (add-hook 'erc-insert-modify-hook 'erc-put-color-on-nick)
 
-;; timestamps
 
+;; Timestamps
 (make-variable-buffer-local
  (defvar erc-last-datestamp nil))
 
@@ -159,9 +153,10 @@
       erc-insert-timestamp-function 'ks-timestamp)
 
 
-;; kill all erc buffers
+;; Kill all ERC buffers
 (defun myerc-kill-all-buffers ()
-  "Kill all erc-mode buffers. Useful to cleanup after an ERC session"
+  "Kill all erc-mode buffers. Useful to cleanup after an ERC
+session"
   (interactive)
   (let (final-list (list ))
     (dolist (buff (buffer-list) final-list)
@@ -172,11 +167,3 @@
             (dolist (buff final-list nil)
               (kill-buffer buff)))
       (message "No ERC buffers to kill"))))
-
-
-;; custom settings
-
-(setq erc-kill-buffer-on-part t
-      erc-kill-queries-on-quit t
-      erc-kill-server-buffer-on-quit t
-      erc-timestamp-right-align-by-pixel t)
