@@ -15,7 +15,8 @@
 (add-hook 'erc-mode-hook
           '(lambda ()
              (require 'erc-pcomplete)
-             (pcomplete-erc-setup)))
+             (pcomplete-erc-setup)
+             (erc-ncm-mode 1)))
 
 (eval-after-load "my-erc"
   '(progn
@@ -36,7 +37,6 @@
      (erc-scrolltobottom-mode 1)
      (erc-move-to-prompt-mode 1)
      (erc-netsplit-mode t)
-     (erc-ncm-mode 1)
      ;; Custom Settings
      (setq erc-kill-buffer-on-part t
            erc-kill-queries-on-quit t
@@ -51,8 +51,8 @@
            '(("freenode.net" "#archlinux" "#emacs" "#vim" "#xmonad")))))
 
 
-;;; Number of OPPED/VOICED/NORMAL members of the current channel in
-;;; the modeline
+;; Number of OPPED/VOICED/NORMAL members of the current channel in
+;; the modeline
 (define-minor-mode erc-ncm-mode "" nil
   (:eval
    (let ((ops 0)
@@ -65,10 +65,10 @@
                   (setq voices (1+ voices)))
                 (setq members (1+ members)))
               erc-channel-users)
-     (format " %S/%S/%S " ops voices members))))
+     (format " %S/%S/%S" ops voices members))))
 
 
-;;;Change header line face if DISCONNECTED
+;;Change header line face if DISCONNECTED
 (defface erc-header-line-disconnected
   '((t (:foreground "black" :background "indianred")))
   "Face to use when ERC has been disconnected.")
@@ -98,8 +98,8 @@ ERC if not already started."
                :password my-erc-fn-pass
                :full-name my-erc-fn-name))))
 
-;;; ERC nick colors section.
-;;; Pool of colors to use when coloring IRC nicks.
+;; ERC nick colors section.
+;; Pool of colors to use when coloring IRC nicks.
 (setq erc-colors-list '("blue" "green" "yellow"
                         "gray" "brown" "red"
                         "purple" "white" "cyan"
@@ -148,7 +148,7 @@ erc-get-color-for-nick"
 
 (setq erc-timestamp-only-if-changed-flag t
       erc-timestamp-format "[%H:%M:%S] "
-      erc-datestamp-format " === [%Y-%m-%d %a] ===\n" ; mandatory ascii art
+      erc-datestamp-format " === [%Y-%m-%d %a] ===\n"
       erc-fill-prefix "      "
       erc-insert-timestamp-function 'ks-timestamp)
 
