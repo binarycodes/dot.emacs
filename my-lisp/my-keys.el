@@ -13,7 +13,7 @@
 (define-key my-keys-map [f12] 'my-kill-non-file-buffs)
 
 ;; usefull for quickly opening links from irc and elsewhere
-(define-key my-keys-map (kbd "C-c C-o") 'org-open-at-point-global)
+(define-key my-keys-map (kbd "C-c C-o") 'browse-url-at-point)
 
 
 
