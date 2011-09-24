@@ -15,8 +15,7 @@
 (add-hook 'erc-mode-hook
           '(lambda ()
              (require 'erc-pcomplete)
-             (pcomplete-erc-setup)
-             (erc-ncm-mode 1)))
+             (pcomplete-erc-setup)))
 
 (eval-after-load "my-erc"
   '(progn
@@ -44,7 +43,7 @@
            erc-timestamp-right-align-by-pixel t
            erc-auto-query 'window
            erc-prompt ">>> "
-           erc-hide-list '("JOIN" "PART" "QUIT")
+           erc-hide-list '("JOIN" "PART" "QUIT" "NICK" "MODE" "LIST" "353")
            erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE"
                                      "324" "329" "332" "333" "353" "477" "357")
            erc-autojoin-channels-alist
@@ -53,19 +52,21 @@
 
 ;; Number of OPPED/VOICED/NORMAL members of the current channel in
 ;; the modeline
-(define-minor-mode erc-ncm-mode "" nil
-  (:eval
-   (let ((ops 0)
-         (voices 0)
-         (members 0))
-     (maphash (lambda (key value)
-                (when (erc-channel-user-op-p key)
-                  (setq ops (1+ ops)))
-                (when (erc-channel-user-voice-p key)
-                  (setq voices (1+ voices)))
-                (setq members (1+ members)))
-              erc-channel-users)
-     (format " %S/%S/%S" ops voices members))))
+(defun erc-cmd-howmany (&rest ignore)
+  "Display how many users (and ops) the current channel has."
+  (interactive)
+  (erc-display-message nil 'notice (current-buffer)
+                       (let ((ops 0)
+                             (voices 0)
+                             (members 0))
+                         (maphash (lambda (key value)
+                                    (when (erc-channel-user-op-p key)
+                                      (setq ops (1+ ops)))
+                                    (when (erc-channel-user-voice-p key)
+                                      (setq voices (1+ voices)))
+                                    (setq members (1+ members)))
+                                  erc-channel-users)
+                         (format "ops :: %S / voices :: %S / members :: %S" ops voices members))))
 
 
 ;;Change header line face if DISCONNECTED
