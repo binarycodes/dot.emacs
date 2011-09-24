@@ -56,7 +56,8 @@
 ;; easyPG settings
 (require 'my-easypg)
 
-
 ;; my-custom keybinding mode
 (require 'my-keys)
 
+;; uniquify mode
+(require 'uniquify)

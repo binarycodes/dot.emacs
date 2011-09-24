@@ -129,3 +129,8 @@
         ": " (:eval (if (buffer-file-name)
                         (abbreviate-file-name (buffer-file-name))
                       "%b")) " [%*]"))
+
+
+;; uniquify mode settings. Makes distinguishing buffers with same
+;; filenames a lot easier
+(setq uniquify-buffer-name-style 'forward)
