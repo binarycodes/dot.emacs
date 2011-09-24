@@ -39,13 +39,14 @@ recursively, while excluding the content from the exclude-list"
 
 
 (defun my-kill-non-file-buffs ()
-  "Kill all buffers that are not associated with files. Excludes
-non-file buffers for some modes and buffer names. Mode list and
-buffer names to be updated as per convenience."
+  "Kill all buffers that are not associated with files or running
+processes. Excludes on-file buffers for some modes and buffer
+names. Mode list and uffer names to be updated as per
+convenience."
   (interactive)
   (dolist (buffer (buffer-list))
-    (when (and  (equal (buffer-file-name buffer) nil)
-                (not (member (with-current-buffer buffer major-mode) '(erc-mode slime-repl-mode comint-mode inferior-lisp)))
-                (not (member (buffer-name buffer) '(" *cl-connection*"))))
+    (when (and (equal (buffer-file-name buffer) nil)
+               (not (member (with-current-buffer buffer major-mode) '(erc-mode slime-repl-mode comint-mode inferior-lisp)))
+               (equal (get-buffer-process buffer) nil))
       (kill-buffer buffer)))
   (message "Killed some buffers!"))
