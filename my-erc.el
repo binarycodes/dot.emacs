@@ -52,9 +52,8 @@
 
 ;; Number of OPPED/VOICED/NORMAL members of the current channel in
 ;; the modeline
-(defun erc-cmd-howmany (&rest ignore)
+(defun erc-cmd-HOWMANY (&rest ignore)
   "Display how many users (and ops) the current channel has."
-  (interactive)
   (erc-display-message nil 'notice (current-buffer)
                        (let ((ops 0)
                              (voices 0)
