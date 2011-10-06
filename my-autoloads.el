@@ -39,7 +39,7 @@
 (autoload 'magit-status "magit" nil t)
 
 ;; erc settings
-(autoload 'myerc-start-or-switch "my-erc" "ERC mode." t)
+(autoload 'my-erc-start-or-switch "my-erc" "ERC mode." t)
 
 ;; slime mode
 (autoload 'slime "my-slime" "Slime mode." t)

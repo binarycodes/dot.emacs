@@ -102,12 +102,11 @@ ERC if not already started."
 ;; Pool of colors to use when coloring IRC nicks.
 (setq erc-colors-list '("blue" "green" "yellow"
                         "gray" "brown" "red"
-                        "purple" "white" "cyan"
+                        "white" "cyan"
                         "dark gray" "dark orange"
                         "dark magenta" "maroon"
                         "indian red" "forest green"
-                        "dark violet"
-                        )
+                        "dark violet")
       erc-nick-color-alist '((my-erc-fn-nick . "White")))
 
 (defun erc-get-color-for-nick (nick)
