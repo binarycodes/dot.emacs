@@ -8,13 +8,15 @@
 (define-key my-keys-map [f7] 'gnus)
 (define-key my-keys-map [f9] 'myerc-start-or-switch)
 (define-key my-keys-map [f10] 'eshell)
+(define-key my-keys-map [f11] 'my-go-to-scratch)
+(define-key my-keys-map [f12] 'my-kill-non-file-buffs)
+
 (define-key my-keys-map (kbd "M-/") 'hippie-expand)
 (define-key my-keys-map [(control tab)] 'indent-region)
-(define-key my-keys-map [f12] 'my-kill-non-file-buffs)
+
 
 ;; usefull for quickly opening links from irc and elsewhere
 (define-key my-keys-map (kbd "C-c C-o") 'browse-url-at-point)
-
 
 
 (define-minor-mode my-keys-mode

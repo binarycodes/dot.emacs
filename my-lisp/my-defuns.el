@@ -9,11 +9,6 @@
   (message "%s" browse-url-browser-function))
 
 
-(defun lorem ()
-  (interactive)
-  (insert "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent libero orci, auctor sed, faucibus vestibulum, gravida vitae, arcu. Nunc posuere. Suspendisse potenti. Praesent in arcu ac nisl ultricies ultricies. Fusce eros. Sed pulvinar vehicula ante. Maecenas urna dolor, egestas vel, tristique et, porta eu, leo. Curabitur vitae sem eget arcu laoreet vulputate. Cras orci neque, faucibus et, rhoncus ac, venenatis ac, magna. Aenean eu lacus. Aliquam luctus facilisis augue. Nullam fringilla consectetuer sapien. Aenean neque augue, bibendum a, feugiat id, lobortis vel, nunc. Suspendisse in nibh quis erat condimentum pretium. Vestibulum tempor odio et leo. Sed sodales vestibulum justo. Cras convallis pellentesque augue. In eu magna. In pede turpis, feugiat pulvinar, sodales eget, bibendum consectetuer, magna. Pellentesque vitae augue."))
-
-
 ;; Make the whole buffer pretty and consistent
 (defun iwb()
   "Indent Whole Buffer"
@@ -21,7 +16,6 @@
   (delete-trailing-whitespace)
   (indent-region (point-min) (point-max) nil)
   (untabify (point-min) (point-max)))
-
 
 
 (defun add-to-load-path-with-subdirs (base exclude-list include-list)
@@ -37,7 +31,6 @@ recursively, while excluding the content from the exclude-list"
   (add-to-list 'load-path base))
 
 
-
 (defun my-kill-non-file-buffs ()
   "Kill all buffers that are not associated with files or running
 processes. Excludes on-file buffers for some modes and buffer
@@ -50,3 +43,10 @@ convenience."
                (equal (get-buffer-process buffer) nil))
       (kill-buffer buffer)))
   (message "Killed some buffers!"))
+
+
+(defun my-go-to-scratch ()
+  "Re-create the *scratch* buffer if it doesn't exist else switch
+to the existing one"
+  (interactive)
+  (switch-to-buffer (get-buffer-create "*scratch*")))
