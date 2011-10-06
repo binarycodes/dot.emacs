@@ -82,7 +82,7 @@
 (setq erc-header-line-face-method 'erc-update-header-line-show-disconnected)
 
 
-(defun myerc-start-or-switch ()
+(defun my-erc-start-or-switch ()
   "Switch to ERC buffer using IDO to choose which one, or start
 ERC if not already started."
   (interactive)
@@ -91,7 +91,7 @@ ERC if not already started."
       (if (equal 'erc-mode (with-current-buffer buf major-mode))
           (setq final-list (append (list (buffer-name buf)) final-list))))
     (if final-list
-        (switch-to-buffer (ido-completing-read "Buffer: " final-list))
+        (switch-to-buffer (ido-completing-read "Buffer: " (sort final-list 'string<)))
       (erc-tls :server "irc.freenode.net"
                :port 7000
                :nick my-erc-fn-nick
@@ -154,7 +154,7 @@ erc-get-color-for-nick"
 
 
 ;; Kill all ERC buffers
-(defun myerc-kill-all-buffers ()
+(defun my-erc-kill-all-buffers ()
   "Kill all erc-mode buffers. Useful to cleanup after an ERC
 session"
   (interactive)
