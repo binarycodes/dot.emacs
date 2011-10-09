@@ -47,6 +47,7 @@ convenience."
 
 (defun my-go-to-scratch ()
   "Re-create the *scratch* buffer if it doesn't exist else switch
-to the existing one"
+to the existing one."
   (interactive)
-  (switch-to-buffer (get-buffer-create "*scratch*")))
+  (switch-to-buffer (get-buffer-create "*scratch*"))
+  (lisp-interaction-mode))
