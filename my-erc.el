@@ -17,6 +17,7 @@
              (require 'erc-pcomplete)
              (pcomplete-erc-setup)))
 
+
 (eval-after-load "my-erc"
   '(progn
      ;; Loading all requried MODES
@@ -38,6 +39,7 @@
      (erc-netsplit-mode t)
      ;; Custom Settings
      (setq erc-kill-buffer-on-part t
+           erc-nick (list my-erc-fn-nick my-erc-fn-nick2)
            erc-kill-queries-on-quit t
            erc-kill-server-buffer-on-quit t
            erc-timestamp-right-align-by-pixel t
@@ -47,7 +49,8 @@
            erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE"
                                      "324" "329" "332" "333" "353" "477" "357")
            erc-autojoin-channels-alist
-           '(("freenode.net" "#archlinux" "#emacs" "#vim" "#xmonad")))))
+           '(("freenode.net" "#archlinux" "#emacs" "#vim" "#xmonad"))
+           erc-server-reconnect-timeout 30)))
 
 
 ;; Number of OPPED/VOICED/NORMAL members of the current channel in
