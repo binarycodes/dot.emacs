@@ -61,3 +61,6 @@
 
 ;; uniquify mode
 (require 'uniquify)
+
+;; shell settings
+(require 'my-shell)

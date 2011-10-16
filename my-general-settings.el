@@ -20,8 +20,9 @@
 (fringe-mode 0)
 
 ;; ido settings
-(ido-mode 'buffers)                              ; enable for buffer switching only
-(setq ido-enable-flex-matching t)
+(ido-mode 'buffers)
+(setq ido-enable-flex-matching t
+      ido-use-url-at-point t)
 
 ;; gnus config file
 (setq gnus-init-file "~/.emacs.d/my-gnus.el")
@@ -65,9 +66,9 @@
 (windmove-default-keybindings)
 
 ;; backup file settings
-(setq backup-by-copying t                        ; don't clobber symlinks
+(setq backup-by-copying t
       backup-directory-alist
-      '(("." . "~/.emacs.d/my-backup-files"))    ; don't litter my filesystem tree
+      '(("." . "~/.emacs.d/my-backup-files"))
       delete-old-versions t
       kept-new-versions 4
       kept-old-versions 2
@@ -79,14 +80,21 @@
 (put 'narrow-to-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
 
-;; confirm before exiting from emacs
+;; disable overwrite-mode, it just gets in the way
+(put 'overwrite-mode 'disabled t)
+
+;; dont prompt for disabled stuffs, just beep or something
+(setq disabled-command-hook '(lambda ()
+                               (beep)
+                               (message "Command is disabled!")))
+
+;; Confirm before killing Emacs. If the result of the function
+;; call is non-nil, the session is killed, otherwise Emacs continues
+;; to run.
 (setq confirm-kill-emacs
       (lambda (e)
         (y-or-n-p-with-timeout
-         "Really exit Emacs? " 5 nil)))
-
-;; eshell
-(setq eshell-directory-name "~/.emacs.d/eshell/")
+         "Really exit Emacs? " 3 nil)))
 
 ;; auto revert to on disk changes
 (global-auto-revert-mode t)
@@ -109,8 +117,6 @@
  (lambda (face)
    (set-face-attribute face nil :weight 'normal))
  (face-list))
-
-
 
 ;; change term's blue to something more pleasant.
 ;; http://tapoueh.org/blog/2011/07/29-emacs-ansi-colors.html

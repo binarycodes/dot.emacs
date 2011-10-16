@@ -7,7 +7,7 @@
 (define-key my-keys-map [f6] 'magit-status)
 (define-key my-keys-map [f7] 'gnus)
 (define-key my-keys-map [f9] 'my-erc-start-or-switch)
-(define-key my-keys-map [f10] 'eshell)
+(define-key my-keys-map [f10] 'shell)
 (define-key my-keys-map [f11] 'my-go-to-scratch)
 (define-key my-keys-map [f12] 'my-kill-non-file-buffs)
 
