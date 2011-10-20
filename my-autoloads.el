@@ -50,3 +50,6 @@
 
 ;; pkgbuild mode settings
 (autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
+
+;; w3m settings
+(autoload 'w3m-browse-url "w3m-load.el" "W3M browser" t)

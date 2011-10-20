@@ -19,9 +19,6 @@
 ;; haskell
 (require 'my-haskell)
 
-;; w3m browser
-(require 'w3m-load)
-
 ;; flyspell mode
 (require 'my-flyspell)
 
