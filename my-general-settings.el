@@ -3,8 +3,11 @@
 ;; change to my home
 (cd "~")
 
-;; start winner-mode
+;; easy to restore window configurations
 (winner-mode 1)
+
+;; easy switching between windows
+(windmove-default-keybindings)
 
 ;; echo keystrokes instantly
 (setq echo-keystrokes 0.01)
@@ -62,9 +65,6 @@
 (setq column-number-mode t
       default-tab-width 4)
 
-;; easy switching between windows
-(windmove-default-keybindings)
-
 ;; backup file settings
 (setq backup-by-copying t
       backup-directory-alist
@@ -105,7 +105,7 @@
 ;; find-file-at-point is really usefull, similar to gf in vim
 (ffap-bindings)
 
-;; this makes editing camel case words a lot easier
+;; this makes editing camelCase words a lot easier
 (subword-mode)
 
 ;; use the string regex syntax, the default needs too many backslashes
@@ -140,3 +140,6 @@
 ;; uniquify mode settings. Makes distinguishing buffers with same
 ;; filenames a lot easier
 (setq uniquify-buffer-name-style 'forward)
+
+;; setting default major-mode to org-mode
+(setq default-major-mode 'org-mode)
