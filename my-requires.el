@@ -34,11 +34,10 @@
 ;; calendar settings
 (require 'my-calendar)
 
-;; mic-paren settings
-(require 'my-mic-paren)
+;; my paren matching settings
+(require 'my-parens)
 
 ;; dired settings
-(require 'dired-single)
 (require 'my-dired)
 
 ;; cc mode settings
