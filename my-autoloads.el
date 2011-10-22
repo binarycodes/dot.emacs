@@ -53,3 +53,11 @@
 
 ;; w3m settings
 (autoload 'w3m-browse-url "w3m-load.el" "W3M browser" t)
+
+;; dired-x mode settings
+(autoload 'dired-jump "dired-x"
+  "Jump to dired buffer corresponding to current buffer."
+  'interactive)
+(autoload 'dired-jump-other-window "dired-x"
+  "Like \\[dired-jump] (`dired-jump') but in other window."
+  'interactive)

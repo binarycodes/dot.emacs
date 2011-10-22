@@ -18,6 +18,10 @@
 ;; usefull for quickly opening links from irc and elsewhere
 (define-key my-keys-map (kbd "C-c C-o") 'browse-url-at-point)
 
+;; dired-x keybindings, dired-x on autoload
+;; this makes rename/delete buffer & file easier
+(define-key my-keys-map "\C-x\C-j" 'dired-jump)
+(define-key my-keys-map "\C-x4\C-j" 'dired-jump-other-window)
 
 (define-minor-mode my-keys-mode
   "A minor mode so that my key settings override annoying major modes."
