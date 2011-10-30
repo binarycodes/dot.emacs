@@ -4,9 +4,6 @@
 ;; load generic emacs settings
 (require 'my-general-settings)
 
-;; cedet settings
-(require 'my-cedet)
-
 ;; muttrc settings
 (require 'my-muttrc)
 
