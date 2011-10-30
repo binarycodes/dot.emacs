@@ -143,3 +143,7 @@
 
 ;; setting default major-mode to org-mode
 (setq default-major-mode 'org-mode)
+
+
+;; this allows to run minibuffer commands while in the minibuffer
+(setq enable-recursive-minibuffers t)
