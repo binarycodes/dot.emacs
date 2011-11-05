@@ -20,11 +20,13 @@
 
 (eval-after-load "my-erc"
   '(progn
+
      ;; Loading all requried MODES
      (require 'erc-join)
      (require 'erc-netsplit)
      (require 'erc-fill)
      (require 'erc-ring)
+
      (erc-track-mode t)
      (erc-completion-mode 1)
      (erc-autojoin-mode 1)
@@ -37,6 +39,7 @@
      (erc-scrolltobottom-mode 1)
      (erc-move-to-prompt-mode 1)
      (erc-netsplit-mode t)
+
      ;; Custom Settings
      (setq erc-kill-buffer-on-part t
            erc-nick (list my-erc-fn-nick my-erc-fn-nick2)
@@ -50,7 +53,9 @@
                                      "324" "329" "332" "333" "353" "477" "357")
            erc-autojoin-channels-alist
            '(("freenode.net" "#archlinux" "#emacs" "#vim" "#xmonad"))
-           erc-server-reconnect-timeout 30)))
+           erc-server-reconnect-timeout 30)
+
+     (define-key erc-mode-map "\C-ci" 'my-erc-ghost-change-nick)))
 
 
 ;; Number of OPPED/VOICED/NORMAL members of the current channel in
@@ -169,3 +174,12 @@ session"
             (dolist (buff final-list nil)
               (kill-buffer buff)))
       (message "No ERC buffers to kill"))))
+
+
+;; Usefull when nick changes during network connection errors
+(defun my-erc-ghost-change-nick ()
+  "Identify the nick. Ghost and then change nick."
+  (interactive)
+  (erc-cmd-MSG (format "Nickserv identify %s %s" my-erc-fn-nick my-erc-fn-pass))
+  (erc-cmd-MSG (format "Nickserv ghost %s" my-erc-fn-nick))
+  (erc-server-send (format "Nick %s" my-erc-fn-nick)))
