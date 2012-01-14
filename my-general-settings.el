@@ -147,3 +147,6 @@
 
 ;; this allows to run minibuffer commands while in the minibuffer
 (setq enable-recursive-minibuffers t)
+
+;; sets up the whois server to be used for whois querries
+(setq whois-server-name "whois-servers.net")
