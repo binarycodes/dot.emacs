@@ -57,3 +57,9 @@
 
 ;; shell settings
 (require 'my-shell)
+
+;; rinari mode for ruby on rails
+(require 'rinari)
+
+;; yasnippets
+(require 'my-yasnippet)
