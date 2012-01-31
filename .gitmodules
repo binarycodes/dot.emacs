@@ -1,3 +1,6 @@
 [submodule "plugins/yasnippet"]
 	path = plugins/yasnippet
 	url = https://github.com/capitaomorte/yasnippet.git
+[submodule "plugins/mingus"]
+	path = plugins/mingus
+	url = https://github.com/pft/mingus.git
