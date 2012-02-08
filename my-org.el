@@ -12,7 +12,6 @@
 
      (setq org-todo-keywords (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
                                      (sequence "WAITING(w@/!)" "SOMEDAY(s!)" "|" "CANCELLED(c@/!)")
-                                     (sequence "QUOTE(q!)" "QUOTED(Q!)" "|" "APPROVED(A@)" "EXPIRED(E@)" "REJECTED(R@)")
                                      (sequence "OPEN(O)" "|" "CLOSED(C)"))))
 
      (setq org-todo-keyword-faces
