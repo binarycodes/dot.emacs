@@ -64,5 +64,5 @@
 ;; yasnippets
 (require 'my-yasnippet)
 
-;; smex settings - M-x with ido powers!
-(require 'smex)
+;; ido/smex settings - M-x with ido powers!
+(require 'my-ido-smex)
