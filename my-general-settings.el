@@ -23,9 +23,12 @@
 (fringe-mode 0)
 
 ;; ido settings
-(ido-mode 'buffers)
-(setq ido-enable-flex-matching t
-      ido-use-url-at-point t)
+(ido-mode t)
+(setq ido-create-new-buffer 'always
+	  ido-enable-flex-matching t
+	  ido-use-filename-at-point 'guess
+      ido-use-url-at-point t
+	  ido-max-prospects 10)
 
 ;; gnus config file
 (setq gnus-init-file "~/.emacs.d/my-gnus.el")
@@ -101,9 +104,6 @@
 
 ;; require new line at the end
 (setq require-final-newline t)
-
-;; find-file-at-point is really usefull, similar to gf in vim
-(ffap-bindings)
 
 ;; this makes editing camelCase words a lot easier
 (subword-mode)
