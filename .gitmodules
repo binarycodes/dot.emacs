@@ -4,3 +4,6 @@
 [submodule "plugins/mingus"]
 	path = plugins/mingus
 	url = https://github.com/pft/mingus.git
+[submodule "plugins/smex"]
+	path = plugins/smex
+	url = https://github.com/nonsequitur/smex.git

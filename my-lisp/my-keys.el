@@ -23,6 +23,14 @@
 (define-key my-keys-map "\C-x\C-j" 'dired-jump)
 (define-key my-keys-map "\C-x4\C-j" 'dired-jump-other-window)
 
+
+;; smex bindings
+(define-key my-keys-map (kbd "M-x") 'smex)
+(define-key my-keys-map (kbd "M-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+(define-key my-keys-map (kbd "C-c M-x") 'execute-extended-command)
+
+
 (define-minor-mode my-keys-mode
   "A minor mode so that my key settings override annoying major modes."
   t :lighter " MKeys" :keymap my-keys-map)

@@ -30,6 +30,8 @@
       ido-use-url-at-point t
 	  ido-max-prospects 10)
 
+(smex-initialize)
+
 ;; gnus config file
 (setq gnus-init-file "~/.emacs.d/my-gnus.el")
 
