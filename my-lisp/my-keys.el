@@ -30,6 +30,16 @@
 ;; This is your old M-x.
 (define-key my-keys-map (kbd "C-c M-x") 'execute-extended-command)
 
+;; same as M-SPC but removes all spacees
+(define-key my-keys-map (kbd "M-S-SPC") '(lambda ()
+										   (interactive)
+										   (just-one-space 0)))
+
+;; easier to compile
+(define-key my-keys-map (kbd "C-c c") '(lambda ()
+										 (interactive)
+										 (compile "make -k")))
+
 
 (define-minor-mode my-keys-mode
   "A minor mode so that my key settings override annoying major modes."

@@ -9,5 +9,5 @@
 
 (eval-after-load "haskell"
   '(progn
-     (turn-on-haskell-indent t)
+     (turn-on-haskell-indent)
      (require 'inf-haskell)))
