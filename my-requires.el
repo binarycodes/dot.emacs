@@ -66,3 +66,7 @@
 
 ;; ido/smex settings - M-x with ido powers!
 (require 'my-ido-smex)
+
+
+;; openwith
+(require 'my-openwith)
