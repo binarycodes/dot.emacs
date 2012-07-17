@@ -142,3 +142,8 @@
 
 ;; sets up the whois server to be used for whois querries
 (setq whois-server-name "whois-servers.net")
+
+
+;; From https://github.com/magnars/.emacs.d
+;; Various superfluous white-space. Just say no.
+(add-hook 'before-save-hook 'cleanup-buffer-safe)
