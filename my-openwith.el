@@ -24,3 +24,5 @@
                '(file))
          ))
   (openwith-mode 1))
+
+(provide 'my-openwith)
