@@ -27,18 +27,21 @@
 ;; smex bindings
 (define-key my-keys-map (kbd "M-x") 'smex)
 (define-key my-keys-map (kbd "M-X") 'smex-major-mode-commands)
-;; This is your old M-x.
+;; This is the old M-x.
 (define-key my-keys-map (kbd "C-c M-x") 'execute-extended-command)
 
 ;; same as M-SPC but removes all spacees
 (define-key my-keys-map (kbd "M-S-SPC") '(lambda ()
-										   (interactive)
-										   (just-one-space 0)))
+                                           (interactive)
+                                           (just-one-space 0)))
 
 ;; easier to compile
-(define-key my-keys-map (kbd "C-c c") '(lambda ()
-										 (interactive)
-										 (compile "make -k")))
+(define-key my-keys-map (kbd "C-c C") '(lambda ()
+                                         (interactive)
+                                         (compile "make -k")))
+
+(define-key my-keys-map (kbd "C-c c") 'comment-or-uncomment-region)
+(define-key my-keys-map (kbd "C-c u") 'uncomment-region)
 
 
 (define-minor-mode my-keys-mode
