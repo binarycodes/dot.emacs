@@ -55,6 +55,19 @@
 ;; easy to enter key-sequences for binding
 (define-key my-keys-map (kbd "C-c C-k") 'insert-sequence-key)
 
+
+;; dired centered key-bindings goes here
+;;; setting up the dired prefix
+(define-prefix-command 'my-keys-dired-map)
+(define-key my-keys-map (kbd "C-c d") 'my-keys-dired-map)
+
+(define-key my-keys-map (kbd "C-c d n") '(lambda ()
+                                           (interactive)
+                                           (dired "~/documents/org/")))
+(define-key my-keys-map (kbd "C-c d e") '(lambda ()
+                                           (interactive)
+                                           (dired "~/.emacs.d/" "-lhs")))
+
 (define-minor-mode my-keys-mode
   "A minor mode so that my key settings override annoying major modes."
   t :lighter " MKeys" :keymap my-keys-map)
