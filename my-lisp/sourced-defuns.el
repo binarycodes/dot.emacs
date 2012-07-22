@@ -9,3 +9,9 @@ might be bad."
   (untabify (point-min) (point-max))
   (delete-trailing-whitespace)
   (set-buffer-file-coding-system 'utf-8))
+
+;;https://github.com/stsquad/my-emacs-stuff/blob/master/init.el
+(defun insert-sequence-key (key)
+  "Inserts a keystroke suitable for use in fcns like global-set-key"
+  (interactive "kInsert key chord: ")
+  (insert (format "(kbd \"%s\")" (key-description key))))
