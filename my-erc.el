@@ -55,6 +55,8 @@
            '(("freenode.net" "#archlinux" "#emacs" "#vim" "#xmonad"))
            erc-server-reconnect-timeout 30)
 
+     (load-file (expand-file-name "~/.emacs.d/patches/erc-scroll-patch.el"))
+
      (define-key erc-mode-map "\C-ci" 'my-erc-ghost-change-nick)))
 
 
