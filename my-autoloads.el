@@ -61,3 +61,10 @@
 (autoload 'dired-jump-other-window "dired-x"
   "Like \\[dired-jump] (`dired-jump') but in other window."
   'interactive)
+
+;; settings for rainbow mode from elpa
+(autoload 'rainbow-mode "rainbow-mode" "\
+Colorize strings that represent colors.
+This will fontify with colors the string like \"#aabbcc\" or \"blue\".
+
+\(fn &optional ARG)" t nil)
