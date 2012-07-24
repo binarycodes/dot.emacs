@@ -68,6 +68,10 @@
                                            (interactive)
                                            (dired "~/.emacs.d/" "-lhs")))
 
+
+;; easier to search stuff in google
+(define-key my-keys-map (kbd "C-c C-g") 'jd:google)
+
 (define-minor-mode my-keys-mode
   "A minor mode so that my key settings override annoying major modes."
   t :lighter " MKeys" :keymap my-keys-map)

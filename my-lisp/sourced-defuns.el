@@ -15,3 +15,18 @@ might be bad."
   "Inserts a keystroke suitable for use in fcns like global-set-key"
   (interactive "kInsert key chord: ")
   (insert (format "(kbd \"%s\")" (key-description key))))
+
+;;http://git.naquadah.org/?p=~jd/emacs.d.git;a=blob_plain;f=jd-google.el;hb=HEAD
+(defun jd:google (keywords)
+  "Form a google query URL and give it to browse-url"
+  (interactive
+   (list
+    (if (use-region-p)
+    (buffer-substring (region-beginning) (region-end))
+      (read-string "Search Google for: " (thing-at-point 'word)))))
+  (browse-url
+   (concat "http://www.google.com/search?q="
+       (replace-regexp-in-string
+        "[[:space:]]+"
+        "+"
+        keywords))))
