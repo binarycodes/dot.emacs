@@ -2,6 +2,7 @@
 
 (defvar my-keys-map (make-sparse-keymap) "my-keys minor-mode keymap.")
 
+;;all function key mapping goes here
 (define-key my-keys-map (kbd "<f1>") 'man)
 
 (define-key my-keys-map (kbd "<f5>") 'slime)
@@ -9,7 +10,9 @@
 (define-key my-keys-map (kbd "<f7>") 'gnus)
 
 (define-key my-keys-map (kbd "<f9>") 'my-erc-start-or-switch)
-(define-key my-keys-map (kbd "<f10>") 'shell)
+(define-key my-keys-map (kbd "<f10>") '(lambda ()
+                                         (interactive)
+                                         (ansi-term "/bin/zsh")))
 (define-key my-keys-map (kbd "<f11>") 'my-go-to-scratch)
 (define-key my-keys-map (kbd "<f12>") 'my-kill-non-file-buffs)
 
@@ -53,7 +56,7 @@
 
 
 ;; easy to enter key-sequences for binding
-(define-key my-keys-map (kbd "C-c C-k") 'insert-sequence-key)
+(define-key my-keys-map (kbd "C-c C-S-K") 'insert-sequence-key)
 
 
 ;; dired centered key-bindings goes here

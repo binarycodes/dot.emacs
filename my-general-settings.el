@@ -147,3 +147,7 @@
 ;; From https://github.com/magnars/.emacs.d
 ;; Various superfluous white-space. Just say no.
 (add-hook 'before-save-hook 'cleanup-buffer-safe)
+
+
+;; select from other windows places contents in the kill ring
+(setq x-select-enable-primary t)
