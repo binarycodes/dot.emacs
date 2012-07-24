@@ -6,3 +6,4 @@
 /my-private-info.el
 /.org-id-locations
 /eshell/*
+/elpa/archives/*
