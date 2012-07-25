@@ -1,3 +1,5 @@
+(provide 'my-requires)
+
 ;; custom autoloads for various mode settings
 (require 'my-autoloads)
 

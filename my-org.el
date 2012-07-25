@@ -9,6 +9,7 @@
      (define-key org-mode-map (kbd "C-c a") 'org-agenda)
      (define-key org-mode-map (kbd "C-c b") 'org-iswitchb)
      (define-key org-mode-map (kbd "C-c l") 'org-store-link)
+     (define-key org-mode-map (kbd "C-c t") 'org-todo)
 
      (setq org-todo-keywords (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
                                      (sequence "WAITING(w@/!)" "SOMEDAY(s!)" "|" "CANCELLED(c@/!)")
@@ -47,6 +48,4 @@
                                                 ("NEXT" ("WAITING"))
                                                 ("DONE" ("WAITING") ("CANCELLED")))))
 
-     ))
-
-(add-hook 'org-mode-hook 'org-indent-mode)
+     (add-hook 'org-mode-hook 'org-indent-mode)))
