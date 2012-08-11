@@ -70,10 +70,25 @@
 (define-key my-keys-map (kbd "C-c d e") '(lambda ()
                                            (interactive)
                                            (dired "~/.emacs.d/" "-lhs")))
+(define-key my-keys-map (kbd "C-c d d") '(lambda ()
+                                           (interactive)
+                                           (dired "/data/downloads/done/" "-lhs")))
+(define-key my-keys-map (kbd "C-c d p") '(lambda ()
+                                           (interactive)
+                                           (dired "~/projects/" "-lhs")))
+
+
+;; expand-region from magnar sveens (emacsrocks)
+(define-key my-keys-map (kbd "C-=") 'er/expand-region)
+
+
+;; ace-jump binding
+(define-key my-keys-map (kbd "C-c C-a") 'ace-jump-mode)
 
 
 ;; easier to search stuff in google
 (define-key my-keys-map (kbd "C-c C-g") 'jd:google)
+
 
 (define-minor-mode my-keys-mode
   "A minor mode so that my key settings override annoying major modes."
