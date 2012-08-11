@@ -1,7 +1,16 @@
 (provide 'my-general-settings)
 
+;; coding system settings
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+
+;; Treat clipboard input as UTF-8 string first; compound text next, etc.
+(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+
 ;; change to my home
-(cd "~")
+(setq default-directory (expand-file-name "~/"))
 
 ;; easy to restore window configurations
 (winner-mode 1)
@@ -36,9 +45,8 @@
 (mouse-avoidance-mode 'banish)
 
 ;; turn on font lock globally
-(if (fboundp 'global-font-lock-mode)
-    (global-font-lock-mode 1)                    ; GNU Emacs
-  (setq font-lock-auto-fontify t))               ; XEmacs
+(when (fboundp 'global-font-lock-mode)
+    (global-font-lock-mode 1))   ; GNU Emacs
 
 ;; use hippie-expand instead of dabbrev
 (setq hippie-expand-try-functions-list
@@ -58,7 +66,7 @@
 
 ;; general editor settings
 (setq column-number-mode t
-      default-tab-width 4)
+      tab-width 4)
 
 ;; backup file settings
 (setq backup-by-copying t
@@ -79,7 +87,7 @@
 (put 'overwrite-mode 'disabled t)
 
 ;; dont prompt for disabled stuffs, just beep or something
-(setq disabled-command-hook '(lambda ()
+(setq disabled-command-function '(lambda ()
                                (beep)
                                (message "Command is disabled!")))
 
@@ -133,8 +141,8 @@
 ;; filenames a lot easier
 (setq uniquify-buffer-name-style 'forward)
 
-;; setting default major-mode to org-mode
-(setq default-major-mode 'org-mode)
+;; setting default major-mode
+(setq major-mode 'text-mode)
 
 
 ;; this allows to run minibuffer commands while in the minibuffer
@@ -143,11 +151,14 @@
 ;; sets up the whois server to be used for whois querries
 (setq whois-server-name "whois-servers.net")
 
-
 ;; From https://github.com/magnars/.emacs.d
 ;; Various superfluous white-space. Just say no.
 (add-hook 'before-save-hook 'cleanup-buffer-safe)
 
-
 ;; select from other windows places contents in the kill ring
 (setq x-select-enable-primary t)
+
+;; elpa servers
+(setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
+                         ("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")))

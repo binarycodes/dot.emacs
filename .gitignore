@@ -7,3 +7,5 @@
 /.org-id-locations
 /eshell/*
 /elpa/archives/*
+*.elc
+session.*
