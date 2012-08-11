@@ -1,11 +1,11 @@
 (setq gnus-select-method
       '(nnimap "GMail"
                (nnimap-address "localhost")
-			   (nnimap-server-port 143)
-			   (nnimap-stream network)
+               (nnimap-server-port 143)
+               (nnimap-stream network)
                (nnimap-authenticator login)
-			   (nnimap-expunge-on-close ask)
-			   (nnimap-authinfo-file "/home/sujoy/.authinfo.gpg")))
+               (nnimap-expunge-on-close ask)
+               (nnimap-authinfo-file "/home/sujoy/.authinfo.gpg")))
 
 (define-key gnus-group-mode-map (kbd "vo")
   '(lambda ()
@@ -18,8 +18,7 @@
 (setq message-from-style 'angles)
 
 ;; turn off news
-(setq gnus-nntp-server nil)
-
+(setq gnus-select-method '(nntp nil))
 
 ;; store sent mail on local imap server
 (setq gnus-message-archive-method '(nnimap "localhost"))
