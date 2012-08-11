@@ -13,6 +13,7 @@ it's loaded."
 
   (require 'dired-single)
   (require 'dired-x)                    ;for colorful listing
+  (require 'dired+)
 
   (add-hook 'dired-mode-hook (lambda () (dired-omit-mode 1)))
 
@@ -36,6 +37,3 @@ it's loaded."
      (define-key wdired-mode-map (kbd "C-a") 'dired-back-to-start-of-files)
      (define-key wdired-mode-map (kbd "M-<up>") 'dired-back-to-top)
      (define-key wdired-mode-map (kbd "M-<down>") 'dired-jump-to-bottom)))
-
-
-(require 'dired+)
