@@ -65,8 +65,9 @@
 (setq tramp-default-method "ssh")
 
 ;; general editor settings
-(setq column-number-mode t
-      tab-width 4)
+(column-number-mode 't)
+(setq-default tab-width 4
+              tab-stop-list (number-sequence 4 120 4))
 
 ;; backup file settings
 (setq backup-by-copying t
@@ -140,10 +141,6 @@
 ;; uniquify mode settings. Makes distinguishing buffers with same
 ;; filenames a lot easier
 (setq uniquify-buffer-name-style 'forward)
-
-;; setting default major-mode
-(setq major-mode 'text-mode)
-
 
 ;; this allows to run minibuffer commands while in the minibuffer
 (setq enable-recursive-minibuffers t)

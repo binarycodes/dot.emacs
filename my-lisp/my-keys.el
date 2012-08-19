@@ -77,6 +77,10 @@
                                            (interactive)
                                            (dired "~/projects/" "-lhs")))
 
+(define-key my-keys-map (kbd "C-c d P") '(lambda ()
+                                           (interactive)
+                                           (dired "~/documents/pdfs/" "-lhs")))
+
 
 ;; expand-region from magnar sveens (emacsrocks)
 (define-key my-keys-map (kbd "C-=") 'er/expand-region)
