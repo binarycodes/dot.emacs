@@ -1,10 +1,10 @@
 (provide 'my-yasnippet)
 
 (require 'yasnippet)
+(yas/initialize)
 
-(setq yas/root-directory '("~/.emacs.d/my-snippets"
-						   "~/.emacs.d/plugins/yasnippet/snippets/"))
+(setq yas/root-directory '("~/.emacs.d/my-snippets"))
+(setq yas/snippet-dirs yas/root-directory)
 
-(yas/global-mode 1)
-
-
+(mapc 'yas/load-directory yas/root-directory)
+(yas/global-mode)

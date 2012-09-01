@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(ecb-options-version "2.40")
  '(org-agenda-files nil)
- '(srecode-map-save-file "/home/sujoy/.emacs.d/.srecode/srecode-map"))
+ '(srecode-map-save-file (expand-file-name "~/.emacs.d/.srecode/srecode-map")))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

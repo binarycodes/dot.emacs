@@ -76,7 +76,7 @@
       delete-old-versions t
       kept-new-versions 4
       kept-old-versions 2
-      version-control t)                         ; use versioned backups
+      version-control t)                ; use versioned backups
 
 ;; enabled settings that were disabled by default
 (put 'upcase-region 'disabled nil)
