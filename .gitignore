@@ -9,3 +9,4 @@
 /elpa/archives/*
 *.elc
 session.*
+/url/cookies
