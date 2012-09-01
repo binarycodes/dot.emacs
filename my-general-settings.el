@@ -9,7 +9,7 @@
 ;; Treat clipboard input as UTF-8 string first; compound text next, etc.
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
-;; change to my home
+;; change to my home on startup
 (setq default-directory (expand-file-name "~/"))
 
 ;; easy to restore window configurations
@@ -63,6 +63,7 @@
 
 ;; tramp settings
 (setq tramp-default-method "ssh")
+(setq password-cache-expiry 'nil)
 
 ;; general editor settings
 (column-number-mode 't)
@@ -159,3 +160,7 @@
 (setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
                          ("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
+
+
+;; stop asking for verison controlled links please
+(setq vc-follow-symlinks 't)

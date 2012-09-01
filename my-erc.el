@@ -86,8 +86,8 @@
 (defun erc-update-header-line-show-disconnected ()
   "Use a different face in the header-line when disconnected."
   (erc-with-server-buffer
-    (cond ((erc-server-process-alive) 'erc-header-line)
-          (t 'erc-header-line-disconnected))))
+   (cond ((erc-server-process-alive) 'erc-header-line)
+         (t 'erc-header-line-disconnected))))
 
 (setq erc-header-line-face-method 'erc-update-header-line-show-disconnected)
 
