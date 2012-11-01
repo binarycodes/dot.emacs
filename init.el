@@ -1,6 +1,8 @@
+;; require cl
+(eval-when-compile (require 'cl))
+
 ;; create the history directory if not exists
 ;; since it is not versioned
-(require 'cl)
 
 (unless (file-exists-p  "~/.emacs.d/history/")
   (mkdir "~/.emacs.d/history/"))

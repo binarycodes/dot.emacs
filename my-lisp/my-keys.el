@@ -4,11 +4,9 @@
 
 ;;all function key mapping goes here
 (define-key my-keys-map (kbd "<f1>") 'man)
-
 (define-key my-keys-map (kbd "<f5>") 'slime)
 (define-key my-keys-map (kbd "<f6>") 'magit-status)
 (define-key my-keys-map (kbd "<f7>") 'gnus)
-
 (define-key my-keys-map (kbd "<f9>") 'my-erc-start-or-switch)
 (define-key my-keys-map (kbd "<f10>") '(lambda ()
                                          (interactive)
@@ -69,17 +67,17 @@
                                            (dired "~/documents/org/")))
 (define-key my-keys-map (kbd "C-c d e") '(lambda ()
                                            (interactive)
-                                           (dired "~/.emacs.d/" "-lhs")))
+                                           (dired "~/.emacs.d/")))
 (define-key my-keys-map (kbd "C-c d d") '(lambda ()
                                            (interactive)
-                                           (dired "/data/downloads/done/" "-lhs")))
+                                           (dired "/data/downloads/done/")))
 (define-key my-keys-map (kbd "C-c d p") '(lambda ()
                                            (interactive)
-                                           (dired "~/projects/" "-lhs")))
+                                           (dired "~/projects/")))
 
 (define-key my-keys-map (kbd "C-c d P") '(lambda ()
                                            (interactive)
-                                           (dired "~/documents/pdfs/" "-lhs")))
+                                           (dired "~/documents/pdfs/")))
 
 
 ;; expand-region from magnar sveens (emacsrocks)

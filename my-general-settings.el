@@ -164,3 +164,7 @@
 
 ;; stop asking for verison controlled links please
 (setq vc-follow-symlinks 't)
+
+
+;; ping setup
+(setq ping-program-options '("-c" "4"))
