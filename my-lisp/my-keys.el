@@ -92,6 +92,11 @@
 (define-key my-keys-map (kbd "C-c C-g") 'jd:google)
 
 
+
+;; zap to and upto char
+(define-key my-keys-map (kbd "M-z") 'zap-up-to-char)
+(define-key my-keys-map (kbd "M-Z")  'zap-to-char)
+
 (define-minor-mode my-keys-mode
   "A minor mode so that my key settings override annoying major modes."
   t :lighter " MKeys" :keymap my-keys-map)

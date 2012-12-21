@@ -61,3 +61,6 @@
 (autoload 'dired-jump-other-window "dired-x"
   "Like \\[dired-jump] (`dired-jump') but in other window."
   'interactive)
+
+(autoload 'zap-up-to-char "misc"
+  "Kill up to, but not including ARGth occurrence of CHAR.")
