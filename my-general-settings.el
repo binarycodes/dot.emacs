@@ -46,7 +46,7 @@
 
 ;; turn on font lock globally
 (when (fboundp 'global-font-lock-mode)
-    (global-font-lock-mode 1))   ; GNU Emacs
+  (global-font-lock-mode 1))   ; GNU Emacs
 
 ;; use hippie-expand instead of dabbrev
 (setq hippie-expand-try-functions-list
@@ -90,8 +90,8 @@
 
 ;; dont prompt for disabled stuffs, just beep or something
 (setq disabled-command-function '(lambda ()
-                               (beep)
-                               (message "Command is disabled!")))
+                                   (beep)
+                                   (message "Command is disabled!")))
 
 ;; Confirm before killing Emacs. If the result of the function
 ;; call is non-nil, the session is killed, otherwise Emacs continues
@@ -112,7 +112,8 @@
 
 ;; use the string regex syntax, the default needs too many backslashes
 (eval-after-load "re-builder"
-  (setq reb-re-syntax 'string))
+  '(progn
+     (setq reb-re-syntax 'read)))
 
 ;; disable bold fonts
 (mapc
@@ -169,3 +170,15 @@
 
 ;; ping setup
 (setq ping-program-options '("-c" "4"))
+
+
+;; prompt for creating directories while saving a file if the
+;; directory doesn't exist already
+;; http://stackoverflow.com/questions/6830671/how-to-make-emacs-create-intermediate-dirs-when-saving-a-file
+(add-hook 'before-save-hook
+          (lambda ()
+            (when buffer-file-name
+              (let ((dir (file-name-directory buffer-file-name)))
+                (when (and (not (file-exists-p dir))
+                           (y-or-n-p (format "Directory %s does not exist. Create it?" dir)))
+                  (make-directory dir t))))))
